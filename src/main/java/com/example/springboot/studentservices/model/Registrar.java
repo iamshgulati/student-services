@@ -86,15 +86,22 @@ public class Registrar {
 		return new ArrayList<>(collectionOfCourses.values());
 	}
 	
-	public void registerForCourse(Long studentId, Long courseId) {
+	public void enrollInACourse(Long studentId, Long courseId) {
 		if(collectionOfStudents.containsKey(studentId) && collectionOfCourses.containsKey(courseId)) {
 			collectionOfStudents.get(studentId).getEnrolledCoursesMap().put(courseId, LocalDate.now());
 			collectionOfCourses.get(courseId).getEnrolledStudentsMap().put(studentId, LocalDate.now());
 		}
 	}
 	
+	public void enrollOutOfCourse(Long studentId, Long courseId) {
+		if(collectionOfStudents.containsKey(studentId) && collectionOfCourses.containsKey(courseId)) {
+			collectionOfStudents.get(studentId).getEnrolledCoursesMap().remove(courseId);
+			collectionOfCourses.get(courseId).getEnrolledStudentsMap().remove(studentId);
+		}
+	}
+	
 	public void registerForCourse(int studentId, int courseId) {
-		registerForCourse((Long)(long)studentId, (Long)(long)courseId);
+		enrollInACourse((Long)(long)studentId, (Long)(long)courseId);
 	}
 	
 	public void unregisterFromCourse(Long studentId, Long courseId) {

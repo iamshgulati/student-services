@@ -25,8 +25,12 @@ public class StudentService {
 		registrar.addCourse(course);
 	}
 	
-	public void registerForCourse(Long studentId, Long courseId) {
-		registrar.registerForCourse(studentId, courseId);
+	public void enrollInACourse(Long studentId, Long courseId) {
+		registrar.enrollInACourse(studentId, courseId);
+	}
+	
+	public void enrollOutOfCourse(Long studentId, Long courseId) {
+		registrar.enrollOutOfCourse(studentId, courseId);
 	}
 	
 	public List<Student> retrieveAllStudents() {
